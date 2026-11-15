@@ -24,15 +24,15 @@ def fetch_pokemon(name):
 
 def process_pokemon(data):
     types = []
-    for item in data["types"]:
-        types.append(item["type"]["name"])
+    for item in data.get("types", []):
+         types.append(item.get("type", {}).get("name", "unknown"))
 
     hp = None
-    for item in data["stats"]:
-        if item["stat"]["name"] == "hp":
-            hp = item["base_stat"]
+    for item in data.get("stats", []):
+        if item.get("stat", {}).get("name") == "hp":
+            hp = item.get("base_stat")
 
-    pokemon = {"name": data["name"], "types": types, "hp": hp}
+    pokemon = {"name": data.get("name", "unknown"), "types": types, "hp": hp}
     return [pokemon]
 
 

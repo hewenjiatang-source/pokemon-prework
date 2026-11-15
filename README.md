@@ -20,11 +20,11 @@ Yes. `types` is a list, and each item has a `type` dictionary with the type's na
 
 **Can data be missing or null?**
 
-Some sprite image fields can be null if that image isn't available. This project doesn't use the images.
+If a field is missing, .get() returns a default value instead of crashing. Some sprite image fields can be null if that image isn't available. This project doesn't use the images. 
 
 ## Project plan
 
-The idea is a single Pokemon lookup. The user enters a name, and the program gets the data and prints the name, types, and HP on separate lines. It shows a message if the input is empty, the name isn't found, or the request fails. Getting the data, picking out the fields, and printing them are handled in separate functions. The processed result is stored in a list of dictionaries.
+The idea is a single Pokemon lookup. The user enters a name, and the program gets the data and prints the name, types, and HP on separate lines. It shows a message if the input is empty, the name isn't found, the request times out, or the request fails. Getting the data, picking out the fields, and printing them are handled in separate functions. The processed result is stored in a list of dictionaries.
 
 ## Run it
 
@@ -45,6 +45,13 @@ Enter a Pokemon's English name (for example, pikachu): pikachu
 Name: pikachu
 Types: electric
 HP: 35
+```
+
+If the name doesn't exist:
+
+```text
+Enter a Pokemon's English name (for example, pikachu): pikachuu
+Pokemon not found. Please check the English name.
 ```
 
 It does one lookup and then finishes. Run it again to try another name, like `bulbasaur`.

@@ -2,13 +2,13 @@
 
 Enter a Pokemon's English name to see its name, types, and HP. The data comes from [PokeAPI](https://pokeapi.co/docs/v2).
 
-## API notes
-
-Example request: [pikachu](https://pokeapi.co/api/v2/pokemon/pikachu/)
 
 ## Project Data
 
 PokeAPI returns one Pokemon as a dictionary. The program uses three fields: `name`, `types`, and the HP value inside `stats`. Both `types` and `stats` are lists of nested dictionaries, so the program loops through them to get the type names and the HP. It uses `.get()` so a missing field won't crash the program.
+
+Example request: [pikachu](https://pokeapi.co/api/v2/pokemon/pikachu/)
+
 
 ## Project Decription
 

@@ -11,6 +11,9 @@ def fetch_pokemon(name):
             return None
         response.raise_for_status()
         return response.json()
+    except requests.exceptions.Timeout:
+        print("The request timed out. Please try again.")
+        return None
     except requests.exceptions.RequestException:
         print("Could not get data. Check your internet connection and try again.")
         return None

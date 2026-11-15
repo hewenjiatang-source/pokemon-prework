@@ -25,7 +25,7 @@ def fetch_pokemon(name):
 def process_pokemon(data):
     types = []
     for item in data.get("types", []):
-         types.append(item.get("type", {}).get("name", "unknown"))
+        types.append(item.get("type", {}).get("name", "unknown"))
 
     hp = None
     for item in data.get("stats", []):

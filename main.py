@@ -11,6 +11,9 @@ def fetch_pokemon(name):
             return None
         response.raise_for_status()
         return response.json()
+    except requests.exceptions.Timeout:
+        print("The request timed out. Please try again.")
+        return None
     except requests.exceptions.RequestException:
         print("Could not get data. Check your internet connection and try again.")
         return None
@@ -21,15 +24,15 @@ def fetch_pokemon(name):
 
 def process_pokemon(data):
     types = []
-    for item in data["types"]:
-        types.append(item["type"]["name"])
+    for item in data.get("types", []):
+        types.append(item.get("type", {}).get("name", "unknown"))
 
     hp = None
-    for item in data["stats"]:
-        if item["stat"]["name"] == "hp":
-            hp = item["base_stat"]
+    for item in data.get("stats", []):
+        if item.get("stat", {}).get("name") == "hp":
+            hp = item.get("base_stat")
 
-    pokemon = {"name": data["name"], "types": types, "hp": hp}
+    pokemon = {"name": data.get("name", "unknown"), "types": types, "hp": hp}
     return [pokemon]
 
 
